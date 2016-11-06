@@ -2,8 +2,9 @@
 
 import logging
 
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
+from game.launch import callback_query_handler
 from tools import config, commands
 from tools.logger import Logger
 
@@ -19,6 +20,8 @@ logger.debug("Starting bot...")
 
 dispatcher.add_handler(CommandHandler("config", commands.config_editor_command, pass_args=True, allow_edited=True))
 dispatcher.add_handler(CommandHandler("restart", commands.restart_command, pass_args=True, allow_edited=True))
+
+dispatcher.add_handler(CallbackQueryHandler(callback_query_handler))
 
 updater.start_polling()
 
