@@ -2,7 +2,7 @@ import time
 
 import telegram
 
-from bot import config
+from . import config
 
 
 class Logger:

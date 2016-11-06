@@ -4,8 +4,8 @@ import logging
 
 from telegram.ext import Updater, CommandHandler
 
-from bot import config, commands
-from bot.logger import Logger
+from tools import config, commands
+from tools.logger import Logger
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 

@@ -2,8 +2,8 @@ import threading
 
 import telegram
 
-from bot import config
-from bot.logger import Logger
+from . import config
+from .logger import Logger
 
 
 def config_editor_command(bot, update, args):
