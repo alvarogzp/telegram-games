@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Rock, Paper, Scissors</title>
-  </head>
-  <body>
-    <h1>Rock, Paper, Scissors</h1>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Rock, Paper, Scissors</title>
+
+	</head>
+	<body>
+		<h1>Rock, Paper, Scissors</h1>
+
+	</body>
+	<script type="text/javascript">
+		var rock = 0
+		var paper = 1
+		var scissors = 2
+		var IAmove = Math.round((Math.random() * (0 - 2))) + 2
+
+		var move = prompt("Introduce tu jugada (0 piedra, 1 papel, 2 tijeras)")
+		if (move == rock && IAmove == paper
+			|| move == paper && IAmove == scissors
+			|| move == scissors && IAmove == rock) {
+			alert("Gana la máquina")
+			document.write("Ganó la máquina<br/>")
+		} else if (IAmove == rock && move == paper
+				   || IAmove == paper && move == scissors
+				   || IAmove == scissors && move == rock) {
+			alert("Gana el jugador")
+			document.write("Ganó el jugador<br/>")
+		} else if (move == IAmove) {
+			alert("Empate")
+		} else {
+			alert("Pareces ½ tonto")
+		}
+
+		document.write("(0 piedra, 1 papel, 2 tijeras)<br/>")
+		document.write("La máquina usó: " + IAmove)
+		document.write("<br/>")
+		document.write("Tú, escogiste: " + move)
+
+	</script>
 </html>
