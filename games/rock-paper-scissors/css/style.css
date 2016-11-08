@@ -7,3 +7,7 @@ body {
     width: 250px;
     margin: 0 auto;
 }
+.your-move-message, opponent-move-message {
+	display: none;
+	display: none;
+}
