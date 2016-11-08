@@ -16,8 +16,8 @@
 				<button class="scissors" onclick="play(scissors)">Scissors</button>
 			</div>
 			<div class="result">
-				<p id="your-move-message" style="visibility: hidden">Your move: <span id="your-move"></span></p>
-				<p id="opponent-move-message" style="visibility: hidden">Opponent move: <span id="opponent-move"></span><p>
+				<p id="your-move-message">Your move: <span id="your-move"></span></p>
+				<p id="opponent-move-message">Opponent move: <span id="opponent-move"></span><p>
 				<p id="result-message"></p>
 			</div>
 			<div class="stats">
@@ -58,9 +58,9 @@
 			var result = getResult(move, iaMove)
 
 			document.getElementById("your-move").innerHTML = move
-			document.getElementById("your-move-message").style["visibility"] = "visible"
+			document.getElementById("your-move-message").style["display"] = "block"
 			document.getElementById("opponent-move").innerHTML = iaMove
-			document.getElementById("opponent-move-message").style["visibility"] = "visible"
+			document.getElementById("opponent-move-message").style["display"] = "block"
 			document.getElementById("result-message").innerHTML = result
 			document.getElementById("number-wins").innerHTML = numberOfWins
 			document.getElementById("number-loses").innerHTML = numberOfLoses
