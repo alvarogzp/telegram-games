@@ -1,7 +1,7 @@
 import telegram
 
 
-def callback_query_handler(bot: telegram.Bot, update: telegram.Update):
+def callback_query_game_launcher_handler(bot: telegram.Bot, update: telegram.Update):
     callback_query = update.callback_query
     game_short_name = callback_query.game_short_name
     if game_short_name == "rock_paper_scissors":
