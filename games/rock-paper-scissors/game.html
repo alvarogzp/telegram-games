@@ -3,88 +3,89 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Rock, Paper, Scissors</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
 		<h1>Rock, Paper, Scissors</h1>
 
- <div class="game">
-  <h2>Play!</h2>
-  <div class="moves">
-   <button class="rock" onclick="play(rock)">Rock</button>
-   <button class="paper" onclick="play(paper)">Paper</button>
-   <button class="scissors" onclick="play(scissors)">Scissors</button>
-  </div>
-  <div class="result">
-   <p id="your-move-message" style="visibility: hidden">Your move: <span id="your-move"></span></p>
-   <p id="opponent-move-message" style="visibility: hidden">Opponent move: <span id="opponent-move"></span><p>
-   <p id="result-message"></p>
-  </div>
-  <div class="stats">
-   <h3>Statistics</h3>
-   <p id="number-wins-message">Wins: <span id="number-wins">0</span></p>
-   <p id="number-loses-message">Loses: <span id="number-loses">0</span></p>
-   <p id="number-ties-message">Ties: <span id="number-ties">0</span></p>
-   <p id="number-plays-message">Total games: <span id="number-plays">0</span></p>
-  </div>
- </div>
+		<div class="game">
+			<h2>Play!</h2>
+			<div class="moves">
+				<button class="rock" onclick="play(rock)">Rock</button>
+				<button class="paper" onclick="play(paper)">Paper</button>
+				<button class="scissors" onclick="play(scissors)">Scissors</button>
+			</div>
+			<div class="result">
+				<p id="your-move-message" style="visibility: hidden">Your move: <span id="your-move"></span></p>
+				<p id="opponent-move-message" style="visibility: hidden">Opponent move: <span id="opponent-move"></span><p>
+				<p id="result-message"></p>
+			</div>
+			<div class="stats">
+				<h3>Statistics</h3>
+				<p id="number-wins-message">Wins: <span id="number-wins">0</span></p>
+				<p id="number-loses-message">Loses: <span id="number-loses">0</span></p>
+				<p id="number-ties-message">Ties: <span id="number-ties">0</span></p>
+				<p id="number-plays-message">Total games: <span id="number-plays">0</span></p>
+			</div>
+		</div>
 
 	</body>
 	<script type="text/javascript">
-  var rock = "rock"
-  var paper = "paper"
-  var scissors = "scissors"
+		var rock = "rock"
+		var paper = "paper"
+		var scissors = "scissors"
 
-  var moves = [rock, paper, scissors]
+		var moves = [rock, paper, scissors]
 
-  var winMoves = {
-   rock: scissors,
-   paper: rock,
-   scissors: paper,
-  }
+		var winMoves = {
+			rock: scissors,
+			paper: rock,
+			scissors: paper,
+		}
 
-  var playerWins = "You win!"
-  var opponentWins = "You loose :("
-  var tie = "It's a tie!"
-  var error = "Unknown move"
+		var playerWins = "You win!"
+		var opponentWins = "You lose :("
+		var tie = "It's a tie!"
+		var error = "Unknown move"
 
-  var numberOfWins = 0
-  var numberOfLoses = 0
-  var numberOfTies = 0
-  var numberOfPlays = 0
+		var numberOfWins = 0
+		var numberOfLoses = 0
+		var numberOfTies = 0
+		var numberOfPlays = 0
 
-  function play(move) {
-   var iaMove = chooseRandomElement(moves)
-   var result = getResult(move, iaMove)
+		function play(move) {
+			var iaMove = chooseRandomElement(moves)
+			var result = getResult(move, iaMove)
 
-   document.getElementById("your-move").innerHTML = move
-   document.getElementById("your-move-message").style["visibility"] = "visible"
-   document.getElementById("opponent-move").innerHTML = iaMove
-   document.getElementById("opponent-move-message").style["visibility"] = "visible"
-   document.getElementById("result-message").innerHTML = result
-   document.getElementById("number-wins").innerHTML = numberOfWins
-   document.getElementById("number-loses").innerHTML = numberOfLoses
-   document.getElementById("number-ties").innerHTML = numberOfTies
-   document.getElementById("number-plays").innerHTML = numberOfPlays
-  }
+			document.getElementById("your-move").innerHTML = move
+			document.getElementById("your-move-message").style["visibility"] = "visible"
+			document.getElementById("opponent-move").innerHTML = iaMove
+			document.getElementById("opponent-move-message").style["visibility"] = "visible"
+			document.getElementById("result-message").innerHTML = result
+			document.getElementById("number-wins").innerHTML = numberOfWins
+			document.getElementById("number-loses").innerHTML = numberOfLoses
+			document.getElementById("number-ties").innerHTML = numberOfTies
+			document.getElementById("number-plays").innerHTML = numberOfPlays
+		}
 
-  function getResult(playerMove, opponentMove) {
-   numberOfPlays++
-   if (winMoves[playerMove] == opponentMove) {
-    numberOfWins++
-    return playerWins
-   } else if (playerMove == winMoves[opponentMove]) {
-    numberOfLoses++
-    return opponentWins
-   } else if (playerMove == opponentMove) {
-    numberOfTies++
-    return tie
-   } else {
-    return error
-   }
-  }
+		function getResult(playerMove, opponentMove) {
+			numberOfPlays++
+			if (winMoves[playerMove] == opponentMove) {
+				numberOfWins++
+				return playerWins
+			} else if (playerMove == winMoves[opponentMove]) {
+				numberOfLoses++
+				return opponentWins
+			} else if (playerMove == opponentMove) {
+				numberOfTies++
+				return tie
+			} else {
+				return error
+			}
+		}
 
-  function chooseRandomElement(array) {
-   return array[Math.floor(Math.random() * array.length)]
-  }
+		function chooseRandomElement(array) {
+			return array[Math.floor(Math.random() * array.length)]
+		}
 	</script>
 </html>
