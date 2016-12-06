@@ -1,13 +1,106 @@
-
 body {
     text-align: center;
 }
 .game {
-    border: 1px solid black;
-    width: 250px;
+    border: 5px solid lightgreen;
+    border-radius: 10%;
+    background-color: #39DDFF;
+    width: 50%;
     margin: 0 auto;
 }
+.stats{
+	background-color: #0ECFFF;
+	width: 50%;
+	position: relative;
+	left: 25%;
+	border-radius: 10%;
+	margin-bottom: 2.5%;
+	padding-bottom: 3px;
+}
+
+.stats p{
+	color: white;
+}
+
+.stats p span{
+	background-color: #5DC64D;
+	padding: 2px 5px 2px 5px;
+	border-radius: 20%;
+}
+
+
 #your-move-message, #opponent-move-message {
     display: none;
     display: none;
+}
+
+.rock{
+	background-image: url(rock.png);
+	background-size: 100%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	background-repeat:no-repeat;
+	background-position:center;
+	border: 4px solid transparent;
+}
+
+.rock:focus{
+	background-size: 100%;
+	transition: ease-in 0.3s;
+	width: 115px;
+	height: 115px;
+	position: relative;
+	border: 4px solid yellow;
+	border-radius: 100%;
+	outline: 0;
+}
+.paper{
+	background-image: url(paper.png);
+	background-size: 100%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: 10px;
+}
+
+.paper:focus{
+	background-size: 100%;
+	transition: ease-in 0.3s;
+	width: 110px;
+	height: 110px;
+	position: relative;
+	border: 4px solid yellow;
+	border-radius: 100%;
+	outline: 0;
+}
+
+.scissors{
+	background-image: url(scissor.png);
+	background-size: 100%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: 10px;
+}
+
+.scissors:focus{
+	background-size: 100%;
+	transition: ease-in 0.3s;
+	width: 110px;
+	height: 110px;
+	position: relative;
+	border: 4px solid yellow;
+	border-radius: 100%;
+	outline: 0;
 }
