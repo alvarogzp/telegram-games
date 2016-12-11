@@ -1,7 +1,6 @@
 import telegram
 
-from game import api_data
-
+from game.api import api_data
 
 MAX_SCORE = 999999
 

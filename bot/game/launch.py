@@ -1,6 +1,6 @@
 import telegram
 
-from game import api_data
+from game.api import api_data
 
 
 def callback_query_game_launcher_handler(bot: telegram.Bot, update: telegram.Update):
