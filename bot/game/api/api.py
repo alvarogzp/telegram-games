@@ -1,6 +1,9 @@
 import http.server
 import json
 import socketserver
+import ssl
+
+from tools import config
 
 LISTEN_ADDRESS = ("", 4343)
 
@@ -9,7 +12,9 @@ RESPONSE_ENCODING = "utf-8"
 
 
 class ApiServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
-    pass
+    def server_bind(self):
+        super().server_bind()
+        self.socket = ssl.wrap_socket(self.socket, keyfile=config.Key.SSL_API_KEY.path, certfile=config.Key.SSL_API_CERT.path, server_side=True)
 
 
 class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
