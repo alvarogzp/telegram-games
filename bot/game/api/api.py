@@ -2,6 +2,7 @@ import http.server
 import json
 import socketserver
 import ssl
+import threading
 
 from tools import config
 
@@ -23,7 +24,10 @@ class SslMixIn:
 
 
 class ApiServer(SslMixIn, socketserver.ThreadingMixIn, http.server.HTTPServer):
-    pass
+    daemon_threads = True
+
+    def start(self):
+        threading.Thread(target=self.serve_forever, daemon=True).start()
 
 
 class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
@@ -68,6 +72,13 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
         return {"ok": "ok"}
 
 
-if __name__ == "__main__":
+def start_api_server(background=True):
     server = ApiServer(LISTEN_ADDRESS, ApiRequestHandler)
-    server.serve_forever()
+    if background:
+        server.start()
+    else:
+        server.serve_forever()
+
+
+if __name__ == "__main__":
+    start_api_server(background=False)
