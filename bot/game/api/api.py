@@ -44,9 +44,9 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def _send_api_response(self, response_code, encoded_response):
         self.send_response(response_code)
-        self.send_header("Access-Control-Allow-Origin", "https://rawgit.com")
         self.send_header("Content-type", "application/json")
         self.send_header("Content-Length", str(len(encoded_response)))
+        self.send_header("Access-Control-Allow-Origin", "https://rawgit.com")
         self.end_headers()
         self.wfile.write(encoded_response)
 
