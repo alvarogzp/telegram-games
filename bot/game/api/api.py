@@ -52,7 +52,8 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
     def _get_api_call_from_path(self):
         return "api_call_" + self.path[len(API_PATH):]
 
-    def _encode_response(self, response):
+    @staticmethod
+    def _encode_response(response):
         return json.dumps(response).encode(RESPONSE_ENCODING)
 
     def _send_api_response(self, response_code, encoded_response):
