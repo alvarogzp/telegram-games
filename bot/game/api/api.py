@@ -13,10 +13,17 @@ RESPONSE_ENCODING = "utf-8"
 ALLOWED_ORIGINS = ("https://rawgit.com", "https://cdn.rawgit.com")
 
 
-class ApiServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
+class SslMixIn:
     def server_bind(self):
         super().server_bind()
-        self.socket = ssl.wrap_socket(self.socket, keyfile=config.Key.SSL_API_KEY.path, certfile=config.Key.SSL_API_CERT.path, server_side=True)
+        self.socket = ssl.wrap_socket(self.socket,
+                                      keyfile=config.Key.SSL_API_KEY.path,
+                                      certfile=config.Key.SSL_API_CERT.path,
+                                      server_side=True)
+
+
+class ApiServer(SslMixIn, socketserver.ThreadingMixIn, http.server.HTTPServer):
+    pass
 
 
 class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
