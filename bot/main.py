@@ -4,6 +4,7 @@ import logging
 
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, InlineQueryHandler
 
+from game.api.api import start_api_server
 from game.chooser import inline_query_game_chooser_handler
 from game.launch import callback_query_game_launcher_handler
 from tools import config, commands
@@ -27,4 +28,7 @@ dispatcher.add_handler(InlineQueryHandler(inline_query_game_chooser_handler))
 
 updater.start_polling()
 
-logger.info("Bot started!")
+logger.debug("Starting api server...")
+start_api_server()
+
+logger.info("Running!")
