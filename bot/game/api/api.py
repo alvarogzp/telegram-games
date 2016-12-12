@@ -10,6 +10,8 @@ LISTEN_ADDRESS = ("", 4343)
 API_PATH = "/cgbapi/"
 RESPONSE_ENCODING = "utf-8"
 
+ALLOWED_ORIGINS = ("https://rawgit.com", "https://cdn.rawgit.com")
+
 
 class ApiServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     def server_bind(self):
@@ -46,7 +48,9 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(response_code)
         self.send_header("Content-type", "application/json")
         self.send_header("Content-Length", str(len(encoded_response)))
-        self.send_header("Access-Control-Allow-Origin", "https://rawgit.com")
+        origin = self.headers["Origin"]
+        if origin in ALLOWED_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
         self.end_headers()
         self.wfile.write(encoded_response)
 
