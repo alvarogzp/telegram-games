@@ -11,4 +11,4 @@ def salted_digest(data):
     hasher = SHA512.new()
     hasher.update(data)
     hasher.update(RANDOM_SALT)
-    return hasher.hexdigest()
+    return hasher.digest()
