@@ -4,7 +4,7 @@ import logging
 
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, InlineQueryHandler
 
-from game.api.api import start_api_server
+from game.api.server import start_api_server
 from game.chooser import inline_query_game_chooser_handler
 from game.launch import callback_query_game_launcher_handler
 from tools import config, commands
