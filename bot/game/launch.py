@@ -1,6 +1,6 @@
 import telegram
 
-from game.api import api_data
+from game.api import auth
 
 
 def callback_query_game_launcher_handler(bot: telegram.Bot, update: telegram.Update):
@@ -18,4 +18,4 @@ def _build_url_data(callback_query: telegram.CallbackQuery):
         "u": callback_query.from_user.id,
         "i": callback_query.inline_message_id
     }
-    return api_data.encode(data)
+    return auth.encode(data)

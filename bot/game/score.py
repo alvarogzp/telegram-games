@@ -1,6 +1,6 @@
 import telegram
 
-from game.api import api_data
+from game.api import auth
 
 MAX_SCORE = 999999
 
@@ -10,7 +10,7 @@ class ScoreUpdater:
         self.bot = bot
 
     def set_score(self, data, score):
-        data = api_data.decode(data)
+        data = auth.decode(data)
         if data and score < MAX_SCORE:
             self._do_set_score(data["u"], data["i"], score)
 
