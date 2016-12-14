@@ -83,6 +83,11 @@ class Key:
         required=True
     )
 
+    PROD_GAME_TAG = Config(
+        name="prod_game_tag",
+        required=True
+    )
+
     @classmethod
     def get_by_name(cls, name) -> Config:
         return cls.__dict__.get(name)

@@ -1,17 +1,26 @@
 import telegram
 
 from game.api import auth
+from tools import config
 from tools.format import formatted_user
 from tools.logger import Logger
+
+PROD_GAME = "rock_paper_scissors"
+DEV_GAME = "rock_paper_scissors_dev"
+GAMES = (PROD_GAME, DEV_GAME)
 
 
 def callback_query_game_launcher_handler(bot: telegram.Bot, update: telegram.Update):
     callback_query = update.callback_query
     game_short_name = callback_query.game_short_name
-    if game_short_name == "rock_paper_scissors":
-        callback_query_id = callback_query.id
+    if game_short_name in GAMES:
         url_data = _build_url_data(callback_query)
-        url = "https://rawgit.com/alvarogzp/telegram-games/develop/games/rock-paper-scissors/game.html#" + url_data
+        callback_query_id = callback_query.id
+        if game_short_name == DEV_GAME:
+            base_url = "https://rawgit.com/alvarogzp/telegram-games/develop"
+        else:
+            base_url = "https://cdn.rawgit.com/alvarogzp/telegram-games/" + config.Key.PROD_GAME_TAG.read()
+        url = base_url + "/games/rock-paper-scissors/game.html#" + url_data
         bot.answerCallbackQuery(callback_query_id, url=url)
         _log(bot, callback_query)
 

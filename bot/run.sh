@@ -27,11 +27,17 @@ cd_to_current_script_location()
 
 perform_main_tasks()
 {
+    build_bot
     run_bot
     check_halt_received $?
     sleep ${SLEEP_TIME_SECONDS}
     update_code
     rerun_current_script
+}
+
+build_bot()
+{
+    git rev-parse --short HEAD > config/prod_game_tag
 }
 
 run_bot()

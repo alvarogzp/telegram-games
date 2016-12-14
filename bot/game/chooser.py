@@ -3,10 +3,16 @@ import telegram
 from tools.format import formatted_user
 from tools.logger import Logger
 
+PROD_GAME = "rock_paper_scissors"
+DEV_GAME = "rock_paper_scissors_dev"
+
 
 def inline_query_game_chooser_handler(bot: telegram.Bot, update: telegram.Update):
     inline_query = update.inline_query
-    result = [telegram.InlineQueryResultGame("rock_paper_scissors", "rock_paper_scissors")]
+    if inline_query.query == DEV_GAME:
+        result = [telegram.InlineQueryResultGame(DEV_GAME, DEV_GAME)]
+    else:
+        result = [telegram.InlineQueryResultGame(PROD_GAME, PROD_GAME)]
     bot.answerInlineQuery(inline_query.id, result)
     _log(bot, inline_query)
 
