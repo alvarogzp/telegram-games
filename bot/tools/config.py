@@ -73,6 +73,16 @@ class Key:
         required=True
     )
 
+    SSL_API_KEY = Config(
+        name="ssl_api_key",
+        required=True
+    )
+
+    SSL_API_CERT = Config(
+        name="ssl_api_cert",
+        required=True
+    )
+
     @classmethod
     def get_by_name(cls, name) -> Config:
         return cls.__dict__.get(name)

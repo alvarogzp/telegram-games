@@ -4,8 +4,11 @@ import logging
 
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, InlineQueryHandler
 
+from game.api.api import BotApi
+from game.api.server import start_api_server
 from game.chooser import inline_query_game_chooser_handler
 from game.launch import callback_query_game_launcher_handler
+from game.score import ScoreUpdater
 from tools import config, commands
 from tools.logger import Logger
 
@@ -16,7 +19,7 @@ bot = updater.bot
 bot.updater = updater
 dispatcher = updater.dispatcher
 
-logger = Logger(bot)
+logger = Logger(bot, "START", reuse_message=True)
 logger.debug("Starting bot...")
 
 dispatcher.add_handler(CommandHandler("config", commands.config_editor_command, pass_args=True, allow_edited=True))
@@ -27,4 +30,10 @@ dispatcher.add_handler(InlineQueryHandler(inline_query_game_chooser_handler))
 
 updater.start_polling()
 
-logger.info("Bot started!")
+logger.debug("Starting api server...")
+
+score_updater = ScoreUpdater(bot)
+api = BotApi(bot, score_updater)
+start_api_server(api)
+
+logger.info("Running!")
