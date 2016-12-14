@@ -17,7 +17,7 @@ bot = updater.bot
 bot.updater = updater
 dispatcher = updater.dispatcher
 
-logger = Logger(bot)
+logger = Logger(bot, "START", reuse_message=True)
 logger.debug("Starting bot...")
 
 dispatcher.add_handler(CommandHandler("config", commands.config_editor_command, pass_args=True, allow_edited=True))
