@@ -6,7 +6,7 @@ MAX_SCORE = 999999
 
 
 class ScoreUpdater:
-    def __init(self, bot: telegram.Bot):
+    def __init__(self, bot: telegram.Bot):
         self.bot = bot
 
     def set_score(self, data, score):
