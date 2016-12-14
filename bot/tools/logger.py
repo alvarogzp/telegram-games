@@ -6,13 +6,14 @@ from . import config
 
 
 class Logger:
-    def __init__(self, bot: telegram.Bot):
+    def __init__(self, bot: telegram.Bot, reuse_message=False):
         self.bot = bot
+        self.reuse_message = reuse_message
         self.chat_id = config.Key.LOG_CHAT_ID.read()
         self.log_enabled = bool(self.chat_id)
+        self.message_text = ""
         self.first_send = True
         self.message_id = None
-        self.message_text = ""
 
     def debug(self, text):
         self.send("D", text)
@@ -28,11 +29,17 @@ class Logger:
 
     def send(self, level, text):
         if self.log_enabled:
+            if not self.reuse_message:
+                self._new_message()
             self._update_message_text(level, text)
             if self.first_send:
                 self._send_first_message()
             else:
                 self._edit_message()
+
+    def _new_message(self):
+        self.message_text = ""
+        self.first_send = True
 
     def _update_message_text(self, level, text):
         text_to_add = ""
