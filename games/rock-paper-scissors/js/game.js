@@ -54,3 +54,9 @@ function getResult(playerMove, opponentMove) {
 function chooseRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
+
+function update_score_on_telegram() {
+    submit_score(numberOfWins)
+}
+
+window.setInterval(update_score_on_telegram, 5000)
