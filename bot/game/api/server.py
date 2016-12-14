@@ -4,6 +4,7 @@ import socketserver
 import ssl
 import threading
 
+from game.api.api import DummyApi
 from tools import config
 
 LISTEN_ADDRESS = ("", 4343)
@@ -26,8 +27,12 @@ class SslMixIn:
 class ApiServer(SslMixIn, socketserver.ThreadingMixIn, http.server.HTTPServer):
     daemon_threads = True
 
-    def start(self):
-        threading.Thread(target=self.serve_forever, daemon=True).start()
+    def start(self, api, background):
+        self.api = api
+        if background:
+            threading.Thread(target=self.serve_forever, daemon=True).start()
+        else:
+            self.serve_forever()
 
 
 class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
@@ -73,13 +78,10 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
         return {"ok": "ok"}
 
 
-def start_api_server(background=True):
+def start_api_server(api, background=True):
     server = ApiServer(LISTEN_ADDRESS, ApiRequestHandler)
-    if background:
-        server.start()
-    else:
-        server.serve_forever()
+    server.start(api, background)
 
 
 if __name__ == "__main__":
-    start_api_server(background=False)
+    start_api_server(DummyApi(), background=False)
