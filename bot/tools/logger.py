@@ -6,8 +6,9 @@ from . import config
 
 
 class Logger:
-    def __init__(self, bot: telegram.Bot, reuse_message=False):
+    def __init__(self, bot: telegram.Bot, tag=None, reuse_message=False):
         self.bot = bot
+        self.tag = tag
         self.reuse_message = reuse_message
         self.chat_id = config.Key.LOG_CHAT_ID.read()
         self.log_enabled = bool(self.chat_id)
@@ -45,8 +46,14 @@ class Logger:
         text_to_add = ""
         if self.message_text:
             text_to_add += "\n"
-        text_to_add += ">> {} [{}] {}".format(level, time.strftime("%X"), text)
+        text_to_add += self._get_formatted_text(level, text)
         self.message_text += text_to_add
+
+    def _get_formatted_text(self, level, text):
+        tag = ""
+        if self.tag:
+            tag = " #{} ".format(self.tag)
+        return ">> #{}  [{}] {} {}".format(level, time.strftime("%X"), tag, text)
 
     def _send_first_message(self):
         message = self._do_api_call(self.bot.sendMessage)
