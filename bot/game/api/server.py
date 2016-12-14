@@ -10,7 +10,7 @@ from tools import config
 LISTEN_ADDRESS = ("", 4343)
 
 API_PATH = "/cgbapi/"
-RESPONSE_ENCODING = "utf-8"
+CONTENT_ENCODING = "utf-8"
 
 ALLOWED_ORIGINS = ("https://rawgit.com", "https://cdn.rawgit.com")
 
@@ -36,7 +36,7 @@ class ApiServer(SslMixIn, socketserver.ThreadingMixIn, http.server.HTTPServer):
 
 
 class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
+    def do_POST(self):
         if not self.path.startswith(API_PATH):
             self.send_error(404)
         else:
@@ -59,7 +59,7 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
 
     @staticmethod
     def _encode_response(response):
-        return json.dumps(response).encode(RESPONSE_ENCODING)
+        return json.dumps(response).encode(CONTENT_ENCODING)
 
     def _send_api_response(self, response_code, encoded_response):
         self.send_response(response_code)
@@ -75,7 +75,15 @@ class ApiRequestHandler(http.server.BaseHTTPRequestHandler):
         return {"error": "Not found"}
 
     def api_call_set_score(self):
+        self.server.api.set_score(self._read_body())
         return {"ok": "ok"}
+
+    def _read_body(self):
+        try:
+            length = int(self.headers["Content-Length"])
+            return self.rfile.read(length).decode(CONTENT_ENCODING)
+        except:
+            return ""
 
 
 def start_api_server(api, background=True):
