@@ -55,8 +55,16 @@ function chooseRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
 
-function update_score_on_telegram() {
-    submit_score(numberOfWins)
+// POST SCORE
+
+var POST_SCORE_INTERVAL_MILLIS = 5000
+var lastPostedScore = numberOfWins
+
+function post_score() {
+    if (lastPostedScore != numberOfWins) {
+        submit_score(numberOfWins)
+        lastPostedScore = numberOfWins
+    }
 }
 
-window.setInterval(update_score_on_telegram, 5000)
+window.setInterval(post_score, POST_SCORE_INTERVAL_MILLIS)
