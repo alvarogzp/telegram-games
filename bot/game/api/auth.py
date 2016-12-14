@@ -12,7 +12,7 @@ DATA_DIGEST_SEPARATOR = "-"
 
 
 def encode(data):
-    dumped_data = json.dumps(data)
+    dumped_data = json.dumps(data, separators=(',', ':'))
     encoded_dumped_data = dumped_data.encode(DATA_ENCODING)
     encoded_data = _transport_encode(encoded_dumped_data)
     digest = salted_digest(encoded_data)
