@@ -28,9 +28,7 @@ body {
 	border-radius: 20%;
 }
 
-
-#your-move-message, #opponent-move-message {
-    display: none;
+#result {
     display: none;
 }
 

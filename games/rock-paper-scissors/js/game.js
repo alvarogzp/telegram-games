@@ -25,10 +25,11 @@ function play(move) {
     var result = getResult(move, iaMove)
 
     document.getElementById("your-move").innerHTML = move
-    document.getElementById("your-move-message").style["display"] = "block"
     document.getElementById("opponent-move").innerHTML = iaMove
-    document.getElementById("opponent-move-message").style["display"] = "block"
     document.getElementById("result-message").innerHTML = result
+    document.getElementById("share-score").innerHTML = "Share score: " + numberOfWins
+    document.getElementById("result").style["display"] = "block"
+
     document.getElementById("number-wins").innerHTML = numberOfWins
     document.getElementById("number-loses").innerHTML = numberOfLoses
     document.getElementById("number-ties").innerHTML = numberOfTies
