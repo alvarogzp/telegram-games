@@ -28,7 +28,7 @@ body {
 	border-radius: 20%;
 }
 
-#result {
+#result, .stats {
     display: none;
 }
 
