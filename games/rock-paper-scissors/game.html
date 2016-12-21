@@ -13,15 +13,16 @@
 <div class="game">
     <h2>Play!</h2>
 
+    <h3>You</h3>
     <div class="moves">
-        <button class="rock" onclick="play(rock)">Rock</button>
-        <button class="paper" onclick="play(paper)">Paper</button>
-        <button class="scissors" onclick="play(scissors)">Scissors</button>
+        <button class="move player-move rock" onclick="play(rock)"></button>
+        <button class="move player-move paper" onclick="play(paper)"></button>
+        <button class="move player-move scissors" onclick="play(scissors)"></button>
     </div>
 
     <div id="result" class="result">
-        <p id="your-move-message">Your move: <span id="your-move"></span></p>
-        <p id="opponent-move-message">Opponent move: <span id="opponent-move"></span></p>
+        <h3>Opponent</h3>
+        <button class="move opponent-move" id="opponent-move"></button>
         <p id="result-message"></p>
         <button id="share-score" onclick="TelegramGameProxy.shareScore()">Share score</button>
     </div>
@@ -39,5 +40,6 @@
 <script src="https://telegram.org/js/games.js"></script>
 <script src="../common/js/submit_score.js"></script>
 <script src="js/game.js"></script>
+
 </body>
 </html>

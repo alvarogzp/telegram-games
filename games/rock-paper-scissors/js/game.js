@@ -10,9 +10,9 @@ var winMoves = {
     scissors: paper,
 }
 
-var playerWins = "You win!"
-var opponentWins = "You lose :("
-var tie = "It's a tie!"
+var playerWins = "<span class=\"player-win\">You win!</span>"
+var opponentWins = "<span class=\"opponent-win\">You lose :(</span>"
+var tie = "<span class=\"tie\">It's a tie!</span>"
 var error = "Unknown move"
 
 var numberOfWins = 0
@@ -20,12 +20,13 @@ var numberOfLoses = 0
 var numberOfTies = 0
 var numberOfPlays = 0
 
+var opponentMoveClasses = document.getElementById("opponent-move").className + " "
+
 function play(move) {
     var iaMove = chooseRandomElement(moves)
     var result = getResult(move, iaMove)
 
-    document.getElementById("your-move").innerHTML = move
-    document.getElementById("opponent-move").innerHTML = iaMove
+    document.getElementById("opponent-move").className = opponentMoveClasses + iaMove
     document.getElementById("result-message").innerHTML = result
     document.getElementById("share-score").innerHTML = "Share score: " + numberOfWins
     document.getElementById("result").style["display"] = "block"
