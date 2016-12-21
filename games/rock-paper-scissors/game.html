@@ -20,11 +20,11 @@
         <button class="move player-move scissors" onclick="play(scissors)"></button>
     </div>
 
-    <div id="result" class="result">
+    <div class="result" id="result">
         <h3>Opponent</h3>
         <button class="move opponent-move" id="opponent-move"></button>
-        <p id="result-message"></p>
-        <button id="share-score" onclick="TelegramGameProxy.shareScore()">Share score</button>
+        <p class="result-message" id="result-message"></p>
+        <button class="share-score" id="share-score" onclick="TelegramGameProxy.shareScore()">Share score</button>
     </div>
 </div>
 
