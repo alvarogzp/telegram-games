@@ -6,7 +6,12 @@ function submit_score(score) {
 
 function get_auth_data() {
     hash = window.location.hash
-    return hash.substring(1, hash.indexOf("&"))
+    auth_data = hash.substring(1)
+    additionalDataStart = auth_data.indexOf("&")
+    if (additionalDataStart > 0) {
+        auth_data = auth_data.substring(0, additionalDataStart)
+    }
+    return auth_data
 }
 
 function call_api(name, data) {
