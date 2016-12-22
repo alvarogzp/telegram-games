@@ -17,5 +17,5 @@ function get_auth_data() {
 function call_api(name, data) {
     request = new XMLHttpRequest()
     request.open("POST", "https://cgb.ohbah.com:4343/cgbapi/" + name)
-    request.send(window.location.hash)
+    request.send(data)
 }
