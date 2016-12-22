@@ -1,106 +1,125 @@
 body {
     text-align: center;
 }
+
 .game {
     border: 5px solid lightgreen;
     border-radius: 10%;
     background-color: #39DDFF;
     width: 50%;
     margin: 0 auto;
-}
-.stats{
-	background-color: #0ECFFF;
-	width: 50%;
-	position: relative;
-	left: 25%;
-	border-radius: 10%;
-	margin-bottom: 2.5%;
-	padding-bottom: 3px;
+    padding-bottom: 25px;
 }
 
-.stats p{
-	color: white;
-}
-
-.stats p span{
-	background-color: #5DC64D;
-	padding: 2px 5px 2px 5px;
-	border-radius: 20%;
-}
-
-
-#your-move-message, #opponent-move-message {
-    display: none;
+.result {
     display: none;
 }
 
-.rock{
-	background-image: url(rock.png);
-	background-size: 100%;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	height: 100px;
-	background-repeat:no-repeat;
-	background-position:center;
-	border: 4px solid transparent;
+.moves {
+    height: 110px;
 }
 
-.rock:focus{
-	background-size: 100%;
-	transition: ease-in 0.3s;
-	width: 115px;
-	height: 115px;
-	position: relative;
-	border: 4px solid yellow;
-	border-radius: 100%;
-	outline: 0;
-}
-.paper{
-	background-image: url(paper.png);
-	background-size: 100%;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	height: 100px;
-	background-repeat:no-repeat;
-	background-position:center;
-	margin-left: 10px;
+.move {
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: ease-in 0.3s;
+    margin: 5px;
 }
 
-.paper:focus{
-	background-size: 100%;
-	transition: ease-in 0.3s;
-	width: 110px;
-	height: 110px;
-	position: relative;
-	border: 4px solid yellow;
-	border-radius: 100%;
-	outline: 0;
+.player-move {
+    cursor: pointer;
 }
 
-.scissors{
-	background-image: url(scissor.png);
-	background-size: 100%;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	height: 100px;
-	background-repeat:no-repeat;
-	background-position:center;
-	margin-left: 10px;
+.player-move:focus {
+    background-size: 100%;
+    transition: ease-in 0.3s;
+    width: 110px;
+    height: 110px;
+    position: relative;
+    border: 4px solid yellow;
+    border-radius: 100%;
+    outline: 0;
+    margin: 0px;
 }
 
-.scissors:focus{
-	background-size: 100%;
-	transition: ease-in 0.3s;
-	width: 110px;
-	height: 110px;
-	position: relative;
-	border: 4px solid yellow;
-	border-radius: 100%;
-	outline: 0;
+.rock {
+    background-image: url(rock.png);
+}
+.paper {
+    background-image: url(paper.png);
+}
+.scissors {
+    background-image: url(scissors.png);
+}
+
+.rock.opponent-move {
+    background-image: url(rock_left.png);
+}
+.paper.opponent-move {
+    background-image: url(paper_left.png);
+}
+.scissors.opponent-move {
+    background-image: url(scissors_left.png);
+}
+
+.result-message {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.player-win {
+    color: #009300;
+}
+.opponent-win {
+    color: #B00000;
+}
+.tie {
+    color: #001eff;
+}
+
+.share-score {
+    border: 4px solid lightyellow;
+    border-radius: 40%;
+    background-color: #226584;
+    color: white;
+    margin: 0 auto;
+    padding: 15px;
+    font-weight: bold;
+    font-size: medium;
+    transition: ease-in 0.1s;
+    cursor: pointer;
+}
+
+.share-score:focus {
+    border: 4px solid yellow;
+}
+
+/* hidden stats */
+
+.stats {
+    background-color: #0ECFFF;
+    width: 25%;
+    position: relative;
+    left: 37.5%;
+    border-radius: 10%;
+    margin-bottom: 2.5%;
+    padding-bottom: 3px;
+    margin-top: 30px;
+    padding-top: 1px;
+    display: none;
+}
+
+.stats p {
+    color: white;
+}
+
+.stats p span {
+    background-color: #5DC64D;
+    padding: 2px 5px 2px 5px;
+    border-radius: 20%;
 }
