@@ -8,7 +8,7 @@ body {
     background-color: #39DDFF;
     width: 600px;
     margin: 0 auto;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
 }
 
 .result {
@@ -87,7 +87,6 @@ body {
     border-radius: 40%;
     background-color: #226584;
     color: white;
-    margin: 0 auto;
     padding: 15px;
     font-weight: bold;
     font-size: medium;
