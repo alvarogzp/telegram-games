@@ -173,7 +173,7 @@ body {
 }
 
 /* Samsung Galaxy S5 and others Smartphones----------- */
-@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) {
+@media only screen and (min-device-width: 360px) and (max-device-height: 699px) and (orientation : portrait) {
 
     .game {
         border: 5px solid lightgreen;
@@ -210,7 +210,7 @@ body {
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 641px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 700px) and (max-device-width : 1024px) {
 
     .game {
         border: 5px solid lightgreen;
