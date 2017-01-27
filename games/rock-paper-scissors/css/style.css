@@ -16,7 +16,7 @@ body {
 }
 
 .moves {
-    height: 110px;
+    margin-bottom: 3%;
 }
 
 .move {
@@ -28,7 +28,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     transition: ease-in 0.3s;
-    margin: 5px;
+    margin: 20px;
 }
 
 .player-move {
@@ -44,7 +44,7 @@ body {
     border: 4px solid yellow;
     border-radius: 100%;
     outline: 0;
-    margin: 0px;
+    margin: 15px;
 }
 
 .rock {
@@ -70,6 +70,8 @@ body {
 .result-message {
     font-weight: bold;
     font-size: x-large;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .player-win {
@@ -122,4 +124,124 @@ body {
     background-color: #5DC64D;
     padding: 2px 5px 2px 5px;
     border-radius: 20%;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+
+    h1, h3 {
+        margin-bottom: 1%;
+        margin-top: -1%;
+    }
+
+    .game {
+        border: 5px solid lightgreen;
+        border-radius: 10%;
+        background-color: #39DDFF;
+        width: 100%;
+        margin-left: -5px;
+        padding-bottom: 5%;
+    }
+
+    .move {
+        background-size: 100%;
+        background-color: transparent;
+        border: none;
+        width: 80px;
+        height: 80px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: ease-in 0.3s;
+        margin: 5px;
+    }
+
+    .player-move:focus {
+        background-size: 100%;
+        transition: ease-in 0.3s;
+        width: 90px;
+        height: 90px;
+        position: relative;
+        border: 4px solid yellow;
+        border-radius: 100%;
+        outline: 0;
+        margin: 0px;
+    }
+}
+
+/* Samsung Galaxy S5 and others Smartphones----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) {
+
+    .game {
+        border: 5px solid lightgreen;
+        border-radius: 10%;
+        background-color: #39DDFF;
+        width: 100%;
+        margin-left: -5px;
+        padding-bottom: 5%;
+    }
+
+    .move {
+        background-size: 100%;
+        background-color: transparent;
+        border: none;
+        width: 90px;
+        height: 90px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: ease-in 0.3s;
+        margin: 5px;
+    }
+
+    .player-move:focus {
+        background-size: 100%;
+        transition: ease-in 0.3s;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        border: 4px solid yellow;
+        border-radius: 100%;
+        outline: 0;
+        margin: 0px;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 641px) and (max-device-width : 1024px) {
+
+    .game {
+        border: 5px solid lightgreen;
+        border-radius: 10%;
+        background-color: #39DDFF;
+        width: 80%;
+        padding-bottom: 5%;
+    }
+
+    .move {
+        background-size: 100%;
+        background-color: transparent;
+        border: none;
+        width: 110px;
+        height: 110px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: ease-in 0.3s;
+        margin: 15px;
+    }
+
+    .player-move:focus {
+        float: center;
+        background-size: 100%;
+        transition: ease-in 0.3s;
+        width: 120px;
+        height: 120px;
+        position: relative;
+        border: 4px solid yellow;
+        border-radius: 100%;
+        outline: 0;
+        margin: 10px;
+    }
 }
