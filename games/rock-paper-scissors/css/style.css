@@ -173,7 +173,7 @@ body {
 }
 
 /* Samsung Galaxy S5 and others Smartphones----------- */
-@media only screen and (min-device-width: 360px) and (max-device-height: 699px) and (orientation : portrait) {
+@media only screen and (min-device-width: 321px) and (max-device-height: 699px) and (orientation : portrait) {
 
     .game {
         border: 5px solid lightgreen;
